@@ -12,8 +12,12 @@
     <div class="flex flex-col gap-0 -mt-1 ml-5">
   <label class="font-['Montserrat'] font-normal text-[12px] leading-[17px] flex items-center text-[#0D1D41] W-[98px] h-[17px] flex-none order-0 flex-grow-0">MFA Method</label>
   <div class="relative w-[195px] h-[30px]">
-   <select class="w-full h-full px-4 py-1.0 font-['Montserrat'] font-medium text-[13px] leading-[17px] flex items-center text-[#0D1D41] bg-white border border-gray-300 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
-     
+   <select class="w-full h-full px-4 py-1.0 font-['Montserrat'] font-medium text-[13px] leading-[17px] flex items-center text-[#0D1D41] bg-white border border-gray-300 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C3FFFF]">
+      <option value="" disabled selected>TOTP</option>
+      <option value="authenticator">Authenticator</option>
+      <option value="sms">SMS</option>
+      <option value="backup">Backup Codes</option>
+      <option value="email">Email</option>
     </select>
     <div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
       <svg width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,8 +30,12 @@
 <div class="flex flex-col gap-0 -mt-1 ml-5">
   <label class="font-['Montserrat'] font-normal text-[12px] leading-[17px] flex items-center text-[#0D1D41] W-[98px] h-[17px] flex-none order-0 flex-grow-0">Grace Period</label>
   <div class="relative w-[195px] h-[30px]">
-   <select class="w-full h-full px-4 py-1.0 font-['Montserrat'] font-medium text-[13px] leading-[17px] flex items-center text-[#0D1D41] bg-white border border-gray-300 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
-      
+   <select class="w-full h-full px-4 py-1.0 font-['Montserrat'] font-medium text-[13px] leading-[17px] flex items-center text-[#0D1D41] bg-white border border-gray-300 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C3FFFF]">
+      <option value="" disabled selected>7 days</option>
+      <option value="authenticator">5 days</option>
+      <option value="sms">15 days</option>
+      <option value="backup">20 days</option>
+      <option value="email">30 days</option>
     </select>
     <div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
       <svg width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,8 +48,12 @@
 <div class="flex flex-col gap-0 -mt-1 ml-5">
   <label class="font-['Montserrat'] font-normal text-[12px] leading-[17px] flex items-center text-[#0D1D41] W-[98px] h-[17px] flex-none order-0 flex-grow-0">Reauthentication Period</label>
   <div class="relative w-[195px] h-[30px]">
-   <select class="w-full h-full px-4 py-1.0 font-['Montserrat'] font-medium text-[13px] leading-[17px] flex items-center text-[#0D1D41] bg-white border border-gray-300 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
-      
+   <select class="w-full h-full px-4 py-1.0 font-['Montserrat'] font-medium text-[13px] leading-[17px] flex items-center text-[#0D1D41] bg-white border border-gray-300 rounded-md appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C3FFFF]">
+       <option value="" disabled selected>Every 7 days</option>
+      <option value="authenticator">Every 3 days</option>
+      <option value="sms">Every 15 days</option>
+      <option value="backup">Every 20 days</option>
+      <option value="email">Every 1 month</option>
     </select>
     <div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
       <svg width="13" height="7" viewBox="0 0 13 7" fill="none" xmlns="http://www.w3.org/2000/svg">
