@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-self-service',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './self-service.html',
   styleUrl: './self-service.css',
 })
