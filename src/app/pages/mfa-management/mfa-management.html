@@ -71,6 +71,39 @@
   MFA Enrollment Status
 </div>
 <div class="w-[920px]  flex-none order-2 flex-grow-0  ml-5 mt-5">
-    
+
+    <table class="w-full  border-collapse border border-gray-300">
+    <thead>
+      <tr class="border-b border-gray-200">
+        <th class="px-4 py-3 text-left text-[10px] font-['montserrat'] font-normal font-semibold text-[#6B7280] uppercase tracking-wider ">USER</th>
+        <th class="px-7 py-3 text-left text-[10px] font-['montserrat'] font-normal font-semibold text-[#6B7280] uppercase tracking-wider ">METHOD</th>
+        <th class="px-7 py-3 text-left text-[10px] font-['montserrat'] font-normal font-semibold text-[#6B7280] uppercase tracking-wider ">ENROLLMENT DATE</th>
+        <th class="px-10 py-3 text-left text-[10px] font-['montserrat'] font-normal font-semibold text-[#6B7280] uppercase tracking-wider">STATUS</th>
+        <th class="px-16 py-3 text-left text-[10px] font-['montserrat'] font-normal font-semibold text-[#6B7280] uppercase tracking-wider  ">ACTION</th>
+       </tr>
+    </thead>
+    <tbody>
+      <!-- Row 1 -->
+      <tr class="border-b border-gray-200">
+        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827] ">alice.jhonson@acme.com</td>
+        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal  text-[#6B7280] ">TOTP</td>
+        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">2023-09-15</td>
+        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">
+            <div class=" flex flex-row items-center px-[11px] py-[2px] gap-2.5 mx-auto w-[69px] h-[18px] bg-[#C3FFFF] rounded-full flex-none order-5 grow-0 -ml-4">
+
+  <!-- Green dot -->
+  <div class="w-[4px] h-[4px] bg-[#00C951]  font-semibold rounded-full flex-none order-0 grow-0"></div>
+  <!-- 48 Admin text -->
+  <span class="font-['Kanit'] font-medium text-[9px] leading-[19px] flex items-center uppercase text-[#065F46] flex-none order-1 grow-0 -ml-1">
+    ACTIVE
+  </span>
+</div>
+        </td>
+        <td class="px-16 py-2.5 px-4 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Reset</td>
+       </tr>
+       
+    </tbody>
+  </table>
+  
 </div>
 </div>
