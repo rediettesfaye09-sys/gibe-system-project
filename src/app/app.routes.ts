@@ -5,9 +5,10 @@ import { MfaManagement } from './pages/mfa-management/mfa-management';
 import { TokenClaims } from './pages/token-claims/token-claims';
 export const routes: Routes = [
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-    {path: 'dashboard', component: Dashboard},
-    {path: 'self-service', component: SelfService},
-    {path: 'mfa-management',component: MfaManagement },
-    {path: 'token-claims', component: TokenClaims }
+    
+    {path: 'dashboard', component: Dashboard, data:{title: 'Dashboard'}},
+    {path: 'self-service', component: SelfService, data:{title: 'Self Service'}},
+    {path: 'mfa-management',component: MfaManagement, data:{title: 'MFA Management'} },
+    {path: 'token-claims', component: TokenClaims, data:{title: 'Token Claims'} }
     
 ];
