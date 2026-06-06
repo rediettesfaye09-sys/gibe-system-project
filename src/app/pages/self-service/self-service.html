@@ -141,13 +141,13 @@
 
         <div class="flex flex-row items-start p-0 gap-3 w-[45px] h-[35px] flex-none order-5 flex-grow-0  ml-35 ">
 
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[114px] h-[30px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[114px] h-[30px] bg-white hover:bg-[#00C3C2] border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
   <span class="text-[12px] font-['montserrat'] font-semibold text-[#374151]">Edit Profile</span>
 </button>
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[114px] h-[30px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[114px] h-[30px] bg-white hover:bg-[#00C3C2] border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
   <span class="text-[12px] font-['montserrat'] font-semibold  text-[#374151] whitespace-nowrap">Manage MFA</span>
 </button>
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[134px] h-[30px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[134px] h-[30px] bg-white hover:bg-[#00C3C2] border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
   <span class="text-[12px] font-['montserrat'] font-semibold  text-[#374151] whitespace-nowrap">Change Password</span>
 </button>
 </div>
@@ -170,54 +170,42 @@
         <th class="px-16 py-3 text-left text-xs font-['montserrat'] font-normal font-semibold text-[#6B7280] uppercase tracking-wider  ">DETAILS</th>
        </tr>
     </thead>
-    <tbody>
+    <tbody> 
+      @for(item of paginatedDevices; track $index){
       <!-- Row 1 -->
       <tr class="border-b border-gray-200">
-        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827] ">Chrome on Windows</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal  text-[#6B7280] ">192.168.1.100</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">New York</td>
-        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Now</td>
+        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827] ">{{ item.device }}</td>
+        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal  text-[#6B7280] ">{{ item.ip }}</td>
+        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">{{ item.location }}</td>
+        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">{{ item.lastActive }}</td>
         <td class="px-16 py-2.5 px-4 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Terminate</td>
        </tr>
-      <!-- Row 2 -->
-      <tr class="border-b border-gray-200">
-        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827]">Safari on iphone</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal  text-[#6B7280] ">10.0.2.15</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">New York</td>
-        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">2 hours ago</td>
-        <td class="px-16 py-2.5  text-[11px] font-['kanit'] font-normal text-gray-500 ">Terminate</td>
-       </tr>
-      <!-- Row 3 -->
-       <tr class="border-b border-gray-200">
-        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827]">Chrome on Windows</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">192.168.1.100</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">New York</td>
-        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">5 hours ago</td>
-        <td class="px-16 py-2.5  text-[11px] font-['kanit'] font-normal text-gray-500 ">Terminate</td>
-       </tr>
+      }
     </tbody>
   </table>
 
 </div>
   <div class="flex flex-row justify-between items-center px-6 py-5 gap-[4px] w-[960px] h-[52px] bg-white border-t border-gray-300 flex-none order-3 flex-grow-0 mt-7 shadow-[0_-2px_6px_-2px_#C3FFFF]">
     <span class="font-['Montserrat'] font-normal text-[13.9px] leading-[21px] flex items-center text-gray-500 w-[187px] h-[21px] flex-none order-0 flex-grow-0">
-  Showing 1-10 of 47 controls
+  Showing {{ startIndex }}-{{ endIndex }} of {{ totalRecords }} controls
 </span>
 <div class="flex flex-row items-start p-[260px] gap-2 w-[45px] h-[35px] flex-none order-5 flex-grow-0  -mt-6 ">
   
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[70px] h-[28px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+<button (click)="previousPage()" [disabled]="currentPage === 1"
+ class="box-border flex flex-col justify-center items-center px-4 py-2 w-[70px] h-[28px] bg-white hover:bg-[#00C3C2] border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed">
   <span class="text-[12px] font-['montserrat'] font-semibold text-[#374151]">Previous</span>
 </button>
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[30px] h-[28px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
-  <span class="text-[12px] font-['montserrat'] font-semibold  text-[#374151] whitespace-nowrap">1</span>
+<button (click)="goToPage(1)"  class="box-border flex flex-col justify-center items-center px-4 py-2 w-[30px] h-[28px] bg-white  hover:bg-[#00C3C2] border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+ <span class="text-[12px] font-['montserrat'] font-semibold" [class.text-black]="currentPage === 1" [class.text-[#374151]"]="currentPage !== 1">1</span>
 </button>
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[30px] h-[28px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
-  <span class="text-[12px] font-['montserrat'] font-semibold  text-[#374151] whitespace-nowrap">2</span>
+<button (click)="goToPage(2)" class="box-border flex flex-col justify-center items-center px-4 py-2 w-[30px] h-[28px] bg-white  hover:bg-[#00C3C2] border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+  <span class="text-[12px] font-['montserrat'] font-semibold" [class.text-black]="currentPage === 2" [class.text-[#374151]"]="currentPage !== 2">2</span>
 </button>
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[30px] h-[28px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
-  <span class="text-[12px] font-['montserrat'] font-semibold  text-[#374151] whitespace-nowrap">3</span>
+<button  (click)="goToPage(3)" class="box-border flex flex-col justify-center items-center px-4 py-2 w-[30px] h-[28px] bg-white  hover:bg-[#00C3C2] border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+  <span class="text-[12px] font-['montserrat'] font-semibold" [class.text-black]="currentPage === 3" [class.text-[#374151]"]="currentPage !== 3">3</span>
 </button>
-<button class="box-border flex flex-col justify-center items-center px-4 py-2 w-[70px] h-[28px] bg-white border border-gray-300 rounded-md flex-none order-0 flex-grow-0">
+<button (click)="nextPage()" 
+[disabled]="currentPage === totalPages" class="box-border flex flex-col justify-center items-center px-4 py-2 w-[70px] h-[28px] bg-white  hover:bg-[#00C3C2] border border-gray-300 rounded-md disabled:opacity-50 disabled:cursor-not-allowed">
   <span class="text-[12px] font-['montserrat'] font-semibold  text-[#374151] whitespace-nowrap">Next</span>
 </button>
 </div>
