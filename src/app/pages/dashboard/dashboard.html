@@ -432,8 +432,17 @@ Approval Requests</p>
     </svg>
   </div>
    <input type="text" 
+         [(ngModel)]="search"
          class="box-border flex flex-row items-center px-3 py-2.5 pl-10 w-full h-full text-[13px] bg-white border border-gray-300 rounded-md z-0 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
          placeholder="Search User Management">
+
+         @if(search){
+          <button (click)="clearSearch()" class="absolute right-3 top-1/2 transform -translate-y-1/2">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M13 1L1 13" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+         }
 </div>
      <div class="flex flex-row items-center gap-[3px] mt-3">
       <div class="flex flex-row items-center p-0 gap-0 w-[80.09px] h-[39px] flex-none order-0 self-stretch flex-grow-0">
@@ -486,49 +495,35 @@ Approval Requests</p>
        </tr>
         </thead>
         <tbody>
+          @if(filteredData.length === 0) {
+             <tr>
+          <td colspan="5" class="text-center py-8 text-gray-500">
+            No results found for "{{search}}"
+          </td>
+        </tr>
+          }
+          @for(item of filteredData; track item.user){
           <tr class="border-b border-gray-200">
-        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">2026-06-01 09:23</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827] ">john.doe@example.com</td>
+        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280] ">{{item.timestamp}}</td>
+        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827] ">{{ item.user }}</td>
         <td class="px-7 py-2.5 text-sm text-gray-600 ">
           <div class=" flex flex-row items-center px-[11px] py-[2px] gap-2.5 mx-auto w-[73px] h-[17px] bg-[#D1FAE5] rounded-full flex-none order-1 grow-0 -ml-1">
 
   <div class="w-[4px] h-[4px] bg-[#00C951]  font-semibold rounded-full flex-none order-0 grow-0"></div>
   <span class="font-['Kanit'] font-[600] text-[9px] leading-[19px] flex items-center uppercase text-[#065F46] flex-none order-1 grow-0 -ml-1">
-    CREATE
+   {{ item.action }}
   </span>
 </div></td>
-        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Role: AUDITOR</td>
-        <td class="px-16 py-2.5 px-4 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Added new compliance auditor role</td>
+        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">{{ item.resource }}</td>
+        <td class="px-16 py-2.5 px-4 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">{{ item.details }}</td>
        </tr>
-       <tr class="border-b border-gray-200">
-        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280]">2026-06-01 08:45</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827] ">jane.smith@example.com</td>
-        <td class="px-7 py-2.5">
-          <div class=" flex flex-row items-center px-[11px] py-[2px] gap-2.5 mx-auto w-[73px] h-[17px] bg-[#D1FAE5] rounded-full flex-none order-1 grow-0 -ml-1">
-  <div class="w-[4px] h-[4px] bg-[#00C951]  font-semibold rounded-full flex-none order-0 grow-0"></div>
-  <span class="font-['Kanit'] font-[600] text-[9px] leading-[19px] flex items-center uppercase text-[#065F46] flex-none order-1 grow-0 -ml-1">
-    CREATE
-  </span>
-</div>
-</td>
-        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Role: AUDITOR</td>
-        <td class="px-16 py-2.5  text-[11px] font-['kanit'] font-normal text-gray-500 ">Added new compliance auditor role</td>
-       </tr>
-<tr class="border-b border-gray-300">
-        <td class="px-4 py-2.5 text-[12px] font-['kanit'] font-normal text-[#6B7280]">2026-06-01 08:12</td>
-        <td class="px-7 py-2.5 text-[12px] font-['kanit'] font-normal font-semibold text-[#111827] ">admin@gibe.com</td>
-        <td class="px-7 py-2.5 text-sm text-gray-600 ">
-          <div class=" flex flex-row items-center px-[11px] py-[2px] gap-2.5 mx-auto w-[73px] h-[17px] bg-[#D1FAE5] rounded-full flex-none order-1 grow-0 -ml-1">
-  <div class="w-[4px] h-[4px] bg-[#00C951]  font-semibold rounded-full flex-none order-0 grow-0"></div>
-  <span class="font-['Kanit'] font-[600] text-[9px] leading-[19px] flex items-center uppercase text-[#065F46] flex-none order-1 grow-0 -ml-1">
-    CREATE
-  </span>
-</div></td>
-        <td class="px-10 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Role: ADMIN</td>
-        <td class="px-16 py-2.5 text-[11px] font-['kanit'] font-normal text-gray-500 ">Added new compliance auditor role</td>
-       </tr>
+      }
+  
         </tbody>
       </table>
+         <div class="text-right text-xs text-gray-500 mt-2 pr-2">
+    Showing {{ filteredData.length }} of {{ tableData.length }} results
+  </div>
      </div>
 </div>
 

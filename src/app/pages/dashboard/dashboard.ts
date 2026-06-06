@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
@@ -70,4 +72,52 @@ DelegationApprovalGradient(): string {
     ? 'url(#blueGradient)'
     : 'url(#redGradient)';
 }
+//search from table 
+search: string = '';
+
+// Table data
+  tableData = [
+    { timestamp: '2026-06-01 09:23', user: 'john.doe@example.com', action: 'CREATE', resource: 'Role: AUDITOR', details: 'Added new compliance auditor role' },
+    { timestamp: '2026-06-01 08:45', user: 'jane.smith@example.com', action: 'CREATE', resource: 'Role: AUDITOR', details: 'Added new compliance auditor role' },
+    { timestamp: '2026-06-01 08:12', user: 'admin@gibe.com', action: 'CREATE', resource: 'Role: ADMIN', details: 'Added new compliance auditor role' }
+  ];
+  // Filtered data based on search
+  get filteredData() {
+    if (!this.search) {
+      return this.tableData;
+    }
+    
+    const term = this.search.toLowerCase();
+    const userStartsWith: any[] = [];
+    const otherStartsWith: any[] = [];
+    const userContains: any[] = [];
+    const otherContains: any[] = [];
+    
+    this.tableData.forEach(item => {
+      const userLower = item.user.toLowerCase();
+      const actionLower = item.action.toLowerCase();
+      const resourceLower = item.resource.toLowerCase();
+      const detailsLower = item.details.toLowerCase();
+
+      if (userLower.startsWith(term)) {
+        userStartsWith.push(item);
+      }
+      else if (actionLower.startsWith(term) || resourceLower.startsWith(term) || detailsLower.startsWith(term)) {
+        otherStartsWith.push(item);
+      }
+      else if (userLower.includes(term)) {
+        userContains.push(item);
+      }
+      else if (actionLower.includes(term) || resourceLower.includes(term) || detailsLower.includes(term)) {
+        otherContains.push(item);
+      }
+    });
+    
+    return [...userStartsWith, ...otherStartsWith, ...userContains, ...otherContains];
+  }
+  
+  clearSearch() {
+    this.search = '';
+  }
+
 }
